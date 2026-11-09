@@ -1,0 +1,66 @@
+/* Outside article: author styles and overflow must not crop the enlargement. */
+/* Flare togglers have no runtime in the static site; expose their content. */
+article div[data-mc-target-name] { display: block !important; visibility: visible !important; }
+article .MCToggler_Image_Icon { display: none; }
+.image-zoom-link { cursor: zoom-in; }
+.image-preview {
+  position: fixed;
+  z-index: 100;
+  padding: 12px;
+  background: white;
+  border: 1px solid #9ab4ca;
+  border-radius: 6px;
+  box-shadow: 0 8px 32px #153b5b40;
+  pointer-events: none;
+}
+.image-preview[hidden] { display: none; }
+.image-preview img { display: block; max-width: none; margin: auto; }
+.image-preview span { display: block; font: 12px/1.5 Segoe UI, sans-serif; color: #52687d; margin-top: 6px; }
+.image-viewer {
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 24px);
+  padding: 16px;
+  border: 1px solid #9ab4ca;
+  border-radius: 8px;
+  background: white;
+  color: #23364b;
+}
+.image-viewer::backdrop { background: #102c48b8; }
+.image-viewer img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  max-height: calc(100dvh - 130px);
+  object-fit: contain;
+}
+.image-viewer-tools { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 12px; font: 14px/1.5 Segoe UI, sans-serif; }
+.image-viewer button { border: 1px solid #9ab4ca; border-radius: 4px; padding: 8px 12px; background: #eef3f8; color: #103d68; font: inherit; cursor: pointer; }
+.image-viewer button:focus-visible { outline: 3px solid #eea52e; outline-offset: 3px; }
+.image-translation-legend { max-width: 900px; margin: 16px auto 0; padding: 12px 16px; border-top: 1px solid #9ab4ca; font: 15px/1.5 Segoe UI, sans-serif; }
+.image-translation-legend[hidden] { display: none; }
+.image-translation-legend > p { font-weight: 600; }
+.image-translation-legend dt { color: #52687d; margin-top: 10px; }
+.image-translation-legend dd { margin: 2px 0 0; color: #103d68; }
+@media print { .image-preview, .image-viewer { display: none !important; } }
+.annotation-stage { display:inline-block; position:relative; max-width:100%; vertical-align:top; }
+.annotation-stage > img { display:block; margin:0; }
+.annotation-layer { position:absolute; display:block; pointer-events:none; }
+.annotation-layer[hidden], .annotation-tooltip[hidden] { display:none !important; }
+.annotation-layer .annotation-zone { position:absolute; pointer-events:auto; padding:0; margin:0; border:0; border-radius:2px; background:transparent; cursor:help; min-width:0; }
+.annotation-layer .annotation-zone:hover, .annotation-layer .annotation-zone:focus-visible { background:#ffcf4130; outline:2px solid #947000; outline-offset:2px; }
+.annotation-tooltip { position:fixed; z-index:10000; max-width:min(360px,calc(100vw - 16px)); max-height:calc(100dvh - 16px); overflow:auto; box-sizing:border-box; padding:10px 14px; border:1px solid #9ab4ca; border-radius:6px; background:#fffef7; box-shadow:0 4px 16px #153b5b40; color:#103d68; font:15px/1.5 Segoe UI,sans-serif; text-align:left; }
+.annotation-controls { display:block; margin:8px 0 16px; font:14px/1.5 Segoe UI,sans-serif; }
+.annotation-controls button { padding:6px 10px; border:1px solid #9ab4ca; border-radius:4px; background:#eef3f8; color:#103d68; cursor:pointer; }
+.annotation-hint { display:block; color:#52687d; font:13px/1.5 Segoe UI,sans-serif; margin:8px 0; }
+.annotation-hint[hidden], .annotation-list[hidden] { display:none; }
+.annotation-list { text-align:left; font:14px/1.5 Segoe UI,sans-serif; margin:10px 0; }
+.annotation-list summary { cursor:pointer; color:#103d68; }
+.annotation-list dt { margin-top:8px; color:#52687d; }
+.annotation-list dd { margin-left:0; }
+.annotation-viewer { width:max-content; box-sizing:border-box; }
+.annotation-viewer .image-viewer-tools { flex-wrap:wrap; gap:10px; }
+.annotation-viewport { overflow:auto; max-width:calc(100vw - 58px); max-height:calc(100dvh - 210px); text-align:center; }
+.annotation-viewport.native-size .annotation-stage { max-width:none; }
+.annotation-viewport.native-size img { max-width:none; max-height:none; }
+@media print { .annotation-controls,.annotation-layer,.annotation-tooltip {display:none !important;} }
+.annotation-viewport img { max-height:calc(100dvh - 240px); }
